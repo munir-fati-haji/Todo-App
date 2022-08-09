@@ -1,0 +1,146 @@
+:root {
+  --main-color: #f5f5f5;
+  --background-color: #fff;
+  --text-color: #000;
+  --active-color: #4062b8;
+}
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+.App {
+  .Header {
+    background-image: url("./assets/thomas-bormans-pcpsVsyFp_s-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    .transparent-background {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 80px;
+      background: linear-gradient(
+        90deg,
+        rgb(64, 130, 242, 0.8),
+        rgb(131, 0, 131, 0.8)
+      );
+      display: grid;
+      grid-template-columns: minmax(1px, 1fr) minmax(min-content, 50em) minmax(
+          1px,
+          1fr
+        );
+      .title {
+        grid-column: 2/3;
+        display: flex;
+        justify-content: space-between;
+        color: whitesmoke;
+        letter-spacing: 1.2em;
+        .mode {
+          cursor: pointer;
+        }
+      }
+      form {
+        grid-column: 2/3;
+        display: flex;
+        gap: 10px;
+        background-color: var(--main-color);
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 1px 4px var(--text-color);
+        button {
+          border-radius: 50%;
+          font-size: 1.3em;
+          width: 30px;
+          height: 30px;
+          border: 1px solid gray;
+          background-color: transparent;
+          flex-shrink: 0;
+          color: var(--text-color);
+        }
+        .add-todo {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          input {
+            flex-grow: 1;
+            outline: none;
+            border: none;
+            font-size: 1.2em;
+            background: transparent;
+            color: var(--text-color);
+          }
+        }
+      }
+    }
+  }
+  .todo-list {
+    padding-inline: 80px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: minmax(1px, 1fr) minmax(min-content, 50em) minmax(
+        1px,
+        1fr
+      );
+    .container {
+      grid-column: 2/3;
+      background-color: var(--main-color);
+      border-radius: 20px;
+      margin-top: -50px;
+      box-shadow: 0 1px 4px var(--text-color);
+
+      .todo {
+        padding: 20px;
+        border-bottom: 1px solid grey;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        input[type="checkbox"] {
+          margin-right: 10px;
+          width: 2em;
+          height: 2em;
+          background-color: transparent;
+          border-radius: 50%;
+          vertical-align: middle;
+          border: 1px solid #ddd;
+          appearance: none;
+          cursor: pointer;
+          &:checked {
+            background-color: blueviolet;
+          }
+        }
+        .delete {
+          color: red;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+  .footer {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    button {
+      background: transparent;
+      color: var(--text-color);
+      border: none;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    div {
+      display: flex;
+      gap: 1vw;
+      align-items: center;
+    }
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .add-todo {
+    margin-top: 5px;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
