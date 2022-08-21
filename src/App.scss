@@ -109,6 +109,9 @@ body {
         }
         .delete {
           color: red;
+          border: none;
+          font-size: large;
+          background: transparent;
           &:hover {
             cursor: pointer;
           }

@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { MdDarkMode } from "react-icons/md";
 import { BsSunFill } from "react-icons/bs";
+import axios from "axios";
 
 const Header = () => {
   const [mode, setMode] = useState(true);
+  const [title, setTitle] = useState("");
+  const [deadline, setDeadline] = useState("");
 
   const handleClick = () => {
     setMode(mode ? false : true);
@@ -20,6 +23,16 @@ const Header = () => {
       mode ? "#fff" : "#000"
     );
   };
+  const post = () => {
+    axios
+      .post("http://localhost:8080/api/v1/todo/", {
+        title,
+        done: false,
+        deadline: `${deadline} 12:00`,
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
   return (
     <div className="Header">
       <div className="transparent-background">
@@ -30,11 +43,25 @@ const Header = () => {
           </h1>
         </div>
         <form>
-          <button>+</button>
+          <button onClick={post}>+</button>
           <div className="add-todo">
-            <input type="text" placeholder="Create a new todo" />
+            <input
+              type="text"
+              placeholder="Create a new todo"
+              name="title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+            />
             <label htmlFor="">
-              Set deadline <input type="date" />
+              Set deadline{" "}
+              <input
+                type="date"
+                name="deadline"
+                value={deadline}
+                onChange={(e) => setDeadline(e.target.value)}
+                required
+              />
             </label>
           </div>
         </form>
